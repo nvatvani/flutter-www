@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:go_router/go_router.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
 
 /// Blog Page - List and Detail Views
 class BlogPage extends StatefulWidget {
-  const BlogPage({super.key});
+  final String? initialPostSlug;
+
+  const BlogPage({super.key, this.initialPostSlug});
 
   @override
   State<BlogPage> createState() => _BlogPageState();
@@ -16,6 +19,32 @@ class _BlogPageState extends State<BlogPage> {
   String? _selectedPostSlug;
   String _postContent = '';
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load initial post if slug provided via URL
+    if (widget.initialPostSlug != null && widget.initialPostSlug!.isNotEmpty) {
+      _selectPost(widget.initialPostSlug!);
+    }
+  }
+
+  @override
+  void didUpdateWidget(BlogPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Handle URL changes
+    if (widget.initialPostSlug != oldWidget.initialPostSlug) {
+      if (widget.initialPostSlug != null &&
+          widget.initialPostSlug!.isNotEmpty) {
+        _selectPost(widget.initialPostSlug!);
+      } else {
+        setState(() {
+          _selectedPostSlug = null;
+          _postContent = '';
+        });
+      }
+    }
+  }
 
   void _selectPost(String slug) async {
     setState(() {
@@ -33,10 +62,11 @@ class _BlogPageState extends State<BlogPage> {
   }
 
   void _goBack() {
-    setState(() {
-      _selectedPostSlug = null;
-      _postContent = '';
-    });
+    context.go('/blog');
+  }
+
+  void _navigateToPost(String slug) {
+    context.go('/blog/$slug');
   }
 
   @override
@@ -120,7 +150,7 @@ class _BlogPageState extends State<BlogPage> {
               .map(
                 (post) => _BlogPostCard(
                   post: post,
-                  onTap: () => _selectPost(post.slug),
+                  onTap: () => _navigateToPost(post.slug),
                   isMobile: isMobile,
                 ),
               )
@@ -248,7 +278,11 @@ class _BlogPostCardState extends State<_BlogPostCard> {
                       ).textTheme.labelLarge?.copyWith(color: AppTheme.cyan),
                     ),
                     const SizedBox(width: 8),
-                    Icon(Icons.arrow_forward, size: 16, color: AppTheme.cyan),
+                    const Icon(
+                      Icons.arrow_forward,
+                      size: 16,
+                      color: AppTheme.cyan,
+                    ),
                   ],
                 ),
               ],

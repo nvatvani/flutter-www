@@ -11,10 +11,47 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
+    <!-- Block all web crawlers and AI bots -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="GPTBot" content="noindex, nofollow">
+    <meta name="ChatGPT-User" content="noindex, nofollow">
+    <meta name="CCBot" content="noindex, nofollow">
+    <meta name="Google-Extended" content="noindex, nofollow">
+    <meta name="anthropic-ai" content="noindex, nofollow">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <title>Permissions | Niraj Vatvani</title>
+
+    <!-- Google Consent Mode v2 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+
+        if (localStorage.getItem('cookie_consent') === 'accepted') {
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D5EYF3LTR"></script>
+    <script>
+        gtag('js', new Date());
+        gtag('config', 'G-6D5EYF3LTR', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+    </script>
 
     <style>
         * {
