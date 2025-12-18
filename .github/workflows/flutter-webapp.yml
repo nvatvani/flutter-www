@@ -1,0 +1,30 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+#
+# For reference, see: https://github.com/G1J0SHI/Flutter-Web-App-Deployment
+
+name: Flutter WebApp Deployment to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.cicd.outputs.page-url }}
+    steps:
+      - uses: g1j0shi/flutter-web-app-deployment@main
+        id: cicd
+        with:
+          working-directory: "./"
