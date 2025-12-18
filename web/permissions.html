@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Permissions and License - Niraj Vatvani">
+
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <title>Permissions | Niraj Vatvani</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #030308 0%, #0a0a12 50%, #030308 100%);
+            min-height: 100vh;
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00e5ff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: opacity 0.2s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .license-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00e5ff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .copyright-line {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .intro {
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #a855f7;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        li::before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-size: 12px;
+        }
+
+        .allowed li::before {
+            content: "✓";
+            color: #22c55e;
+        }
+
+        .contact {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 229, 255, 0.15);
+            font-style: italic;
+            color: #6b7280;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .footer a {
+            color: #00e5ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .license-card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Website</a>
+
+        <div class="license-card">
+            <h1>Permissions & License</h1>
+            <p class="copyright-line">Copyright © 2025 Niraj Vatvani. All rights reserved.</p>
+
+            <p class="intro">
+                The contents of this website and repository, including but not limited to all text,
+                images, code, design elements, and documentation, are the intellectual property of
+                Niraj Vatvani.
+            </p>
+
+            <h2>Not Permitted</h2>
+            <ul>
+                <li>Copy, reproduce, or redistribute any part of this website or its source code.</li>
+                <li>Use the design, layout, or theme for personal or commercial projects.</li>
+                <li>Modify or create derivative works based on this content.</li>
+                <li>Use any part of this website, including text, code, or images, for training artificial intelligence
+                    or machine learning models.</li>
+                <li>Crawl, scrape, or index this website using automated bots, spiders, or scrapers without explicit
+                    permission.</li>
+            </ul>
+
+            <h2>Permitted</h2>
+            <ul class="allowed">
+                <li>View this website in a standard web browser as a human visitor.</li>
+                <li>Link to this website or specific pages from other websites.</li>
+            </ul>
+
+            <p class="contact">
+                For permission requests or inquiries, please contact Niraj Vatvani.
+            </p>
+        </div>
+
+        <div class="footer">
+            <a href="/">Return to Website</a>
+        </div>
+    </div>
+</body>
+
+</html>

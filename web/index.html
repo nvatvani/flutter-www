@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Niraj Vatvani - CTO & Product Leader in Energy Tech">
+
+  <!-- Cache Control - Prevent browser caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Niraj Vatvani">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>Niraj Vatvani | CTO & Product Leader</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Viewport for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Block all web crawlers and AI bots -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="GPTBot" content="noindex, nofollow">
+  <meta name="ChatGPT-User" content="noindex, nofollow">
+  <meta name="CCBot" content="noindex, nofollow">
+  <meta name="Google-Extended" content="noindex, nofollow">
+  <meta name="anthropic-ai" content="noindex, nofollow">
+
+
+  <!-- Google Consent Mode v2 - Initialize with denied state (GDPR compliant) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D5EYF3LTR"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-6D5EYF3LTR', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+  </script>
+
+  <!-- Cookie Consent Styles -->
+  <style>
+    :root {
+      --cookie-bg: rgba(10, 10, 18, 0.98);
+      --cookie-border: rgba(0, 229, 255, 0.2);
+      --cookie-cyan: #00e5ff;
+      --cookie-purple: #a855f7;
+      --cookie-text: #a0a0b0;
+      --cookie-white: #ffffff;
+    }
+
+    /* Blur overlay when cookies declined */
+    .content-blur-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 80px;
+      background: rgba(3, 3, 8, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99990;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .content-blur-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Cookie Banner - Full expanded state */
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--cookie-bg) 0%, rgba(3, 3, 8, 0.98) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--cookie-border);
+      z-index: 99999;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      box-shadow: 0 -4px 30px rgba(0, 229, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    /* Collapsed drawer state - height includes header + copyright */
+    .cookie-consent-banner.collapsed {
+      height: 80px;
+      cursor: pointer;
+    }
+
+    .cookie-consent-banner.collapsed:hover {
+      border-top-color: var(--cookie-cyan);
+    }
+
+    /* Expanded state */
+    .cookie-consent-banner.expanded {
+      height: auto;
+    }
+
+    /* Drawer header (always visible) */
+    .cookie-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .cookie-drawer-header:hover {
+      background: rgba(0, 229, 255, 0.05);
+    }
+
+    .cookie-drawer-title {
+      color: var(--cookie-text);
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cookie-drawer-title .icon {
+      font-size: 16px;
+    }
+
+    .cookie-drawer-arrow {
+      color: var(--cookie-cyan);
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .cookie-consent-banner.expanded .cookie-drawer-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Copyright link in drawer */
+    .cookie-copyright-link {
+      text-align: center;
+      padding: 0 20px 12px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+    }
+
+    .cookie-copyright-link a {
+      color: var(--cookie-text);
+      font-size: 11px;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .cookie-copyright-link a:hover {
+      color: var(--cookie-cyan);
+    }
+
+    /* Cookie consent content */
+    .cookie-consent-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .cookie-consent-banner.collapsed .cookie-consent-content {
+      display: none;
+    }
+
+    .cookie-consent-text {
+      flex: 1;
+      min-width: 300px;
+      color: var(--cookie-text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .cookie-consent-text h3 {
+      color: var(--cookie-white);
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    .cookie-consent-text a {
+      color: var(--cookie-cyan);
+      text-decoration: none;
+    }
+
+    .cookie-consent-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Status indicator */
+    .cookie-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .cookie-status.accepted {
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cookie-cyan);
+    }
+
+    .cookie-status.declined {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    .cookie-status.pending {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--cookie-purple);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Buttons */
+    .cookie-consent-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .cookie-btn-accept {
+      background: linear-gradient(135deg, var(--cookie-cyan) 0%, var(--cookie-purple) 100%);
+      color: #030308;
+    }
+
+    .cookie-btn-accept:hover {
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .cookie-btn-decline {
+      background: transparent;
+      color: var(--cookie-text);
+      border: 1px solid rgba(160, 160, 176, 0.3);
+    }
+
+    .cookie-btn-decline:hover {
+      border-color: rgba(160, 160, 176, 0.6);
+      color: var(--cookie-white);
+    }
+
+    /* Declined state message */
+    .declined-message {
+      display: none;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      color: #fca5a5;
+      font-size: 13px;
+    }
+
+    .cookie-consent-banner.declined-state .declined-message {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .cookie-consent-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cookie-consent-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .cookie-btn {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Blur overlay for declined state -->
+  <div id="content-blur-overlay" class="content-blur-overlay"></div>
+
+  <!-- Cookie Consent Banner/Drawer -->
+  <div id="cookie-consent-banner" class="cookie-consent-banner collapsed">
+    <!-- Always visible drawer header -->
+    <div class="cookie-drawer-header" onclick="toggleCookieDrawer()">
+      <div class="cookie-drawer-title">
+        <span class="icon">🍪</span>
+        <span>Cookie Settings</span>
+        <span class="cookie-drawer-arrow">▲</span>
+      </div>
+    </div>
+    <!-- Copyright link (always visible below header) -->
+    <div class="cookie-copyright-link">
+      <a href="permissions.html" onclick="event.stopPropagation();">Copyright © 2025 Niraj Vatvani. All rights
+        reserved.</a>
+    </div>
+
+
+    <!-- Expandable content -->
+    <div class="cookie-consent-content">
+      <div class="cookie-consent-text">
+        <div id="cookie-status" class="cookie-status pending">
+          <span class="status-dot"></span>
+          <span id="status-text">Awaiting your choice</span>
+        </div>
+        <h3>Analytics Cookies</h3>
+        <p>
+          This website uses cookies for <strong>analytics purposes only</strong> to understand how visitors
+          interact with the site. I do <strong>not</strong> use cookies for advertising or tracking across
+          other websites.
+        </p>
+        <div class="declined-message">
+          ⚠️ Website access is restricted. Please accept analytics cookies to browse the full website.
+        </div>
+      </div>
+      <div class="cookie-consent-buttons">
+        <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept Analytics</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie consent state management
+    let isDrawerExpanded = false;
+    let consentStatus = localStorage.getItem('cookie_consent') || 'pending';
+
+    function updateUIForConsentStatus() {
+      const banner = document.getElementById('cookie-consent-banner');
+      const overlay = document.getElementById('content-blur-overlay');
+      const statusEl = document.getElementById('cookie-status');
+      const statusText = document.getElementById('status-text');
+
+      // Remove all state classes
+      banner.classList.remove('declined-state');
+      statusEl.classList.remove('accepted', 'declined', 'pending');
+
+      if (consentStatus === 'accepted') {
+        statusEl.classList.add('accepted');
+        statusText.textContent = 'Analytics enabled';
+        overlay.classList.remove('active');
+        enableNavigation();
+      } else if (consentStatus === 'declined') {
+        statusEl.classList.add('declined');
+        statusText.textContent = 'Analytics disabled';
+        banner.classList.add('declined-state');
+        overlay.classList.add('active');
+        disableNavigation();
+      } else {
+        // Pending/unknown - treat same as declined (GDPR: require explicit consent)
+        statusEl.classList.add('pending');
+        statusText.textContent = 'Please accept to continue';
+        banner.classList.add('declined-state');
+        overlay.classList.add('active');
+        disableNavigation();
+      }
+    }
+
+    function toggleCookieDrawer() {
+      const banner = document.getElementById('cookie-consent-banner');
+      isDrawerExpanded = !isDrawerExpanded;
+
+      if (isDrawerExpanded) {
+        banner.classList.remove('collapsed');
+        banner.classList.add('expanded');
+      } else {
+        banner.classList.remove('expanded');
+        banner.classList.add('collapsed');
+      }
+    }
+
+    function collapseDrawer() {
+      const banner = document.getElementById('cookie-consent-banner');
+      isDrawerExpanded = false;
+      banner.classList.remove('expanded');
+      banner.classList.add('collapsed');
+    }
+
+    function expandDrawer() {
+      const banner = document.getElementById('cookie-consent-banner');
+      isDrawerExpanded = true;
+      banner.classList.remove('collapsed');
+      banner.classList.add('expanded');
+    }
+
+    function acceptCookies() {
+      consentStatus = 'accepted';
+      localStorage.setItem('cookie_consent', 'accepted');
+      localStorage.setItem('cookie_consent_date', new Date().toISOString());
+
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      gtag('event', 'cookie_consent', { 'consent_type': 'accepted' });
+
+      updateUIForConsentStatus();
+
+      // Collapse drawer after a short delay
+      setTimeout(collapseDrawer, 500);
+    }
+
+    function declineCookies() {
+      consentStatus = 'declined';
+      localStorage.setItem('cookie_consent', 'declined');
+      localStorage.setItem('cookie_consent_date', new Date().toISOString());
+
+      gtag('consent', 'update', { 'analytics_storage': 'denied' });
+
+      updateUIForConsentStatus();
+
+      // Keep drawer expanded to show declined message
+      expandDrawer();
+    }
+
+    function disableNavigation() {
+      // Block pointer events on the Flutter app content
+      const flutterView = document.querySelector('flutter-view') || document.querySelector('flt-glass-pane');
+      if (flutterView) {
+        flutterView.style.pointerEvents = 'none';
+      }
+      // Also try to block the body content except cookie banner
+      document.body.style.overflow = 'hidden';
+    }
+
+    function enableNavigation() {
+      const flutterView = document.querySelector('flutter-view') || document.querySelector('flt-glass-pane');
+      if (flutterView) {
+        flutterView.style.pointerEvents = 'auto';
+      }
+      document.body.style.overflow = 'auto';
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      updateUIForConsentStatus();
+
+      // Show expanded banner on first visit
+      if (consentStatus === 'pending') {
+        setTimeout(expandDrawer, 1000);
+      }
+    });
+
+    // Re-apply restrictions after Flutter loads
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        updateUIForConsentStatus();
+      }, 2000);
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+
+</html>

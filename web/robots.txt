@@ -1,0 +1,54 @@
+# robots.txt - Deny all crawlers and AI bots
+# Copyright (c) 2025 Niraj Vatvani. All rights reserved.
+
+# Block all web crawlers
+User-agent: *
+Disallow: /
+
+# Explicitly block known AI training bots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# No sitemap - intentionally not indexed
