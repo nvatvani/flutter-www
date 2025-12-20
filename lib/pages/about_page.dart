@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
@@ -57,10 +57,9 @@ class _AboutPageState extends State<AboutPage> {
 
   Widget _buildHeader(BuildContext context) {
     return ShaderMask(
-      shaderCallback:
-          (bounds) => const LinearGradient(
-            colors: [AppTheme.cyan, AppTheme.purple],
-          ).createShader(bounds),
+      shaderCallback: (bounds) => const LinearGradient(
+        colors: [AppTheme.cyan, AppTheme.purple],
+      ).createShader(bounds),
       child: Text(
         'About Me',
         style: Theme.of(

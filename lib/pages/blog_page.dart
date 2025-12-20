@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
@@ -110,10 +110,9 @@ class _BlogPageState extends State<BlogPage> {
             onPressed: _goBack,
           ),
         ShaderMask(
-          shaderCallback:
-              (bounds) => const LinearGradient(
-                colors: [AppTheme.cyan, AppTheme.purple],
-              ).createShader(bounds),
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [AppTheme.cyan, AppTheme.purple],
+          ).createShader(bounds),
           child: Text(
             _selectedPostSlug != null ? 'Back to Blog' : 'Blog',
             style: Theme.of(
@@ -145,16 +144,15 @@ class _BlogPageState extends State<BlogPage> {
     return Wrap(
       spacing: 24,
       runSpacing: 24,
-      children:
-          posts
-              .map(
-                (post) => _BlogPostCard(
-                  post: post,
-                  onTap: () => _navigateToPost(post.slug),
-                  isMobile: isMobile,
-                ),
-              )
-              .toList(),
+      children: posts
+          .map(
+            (post) => _BlogPostCard(
+              post: post,
+              onTap: () => _navigateToPost(post.slug),
+              isMobile: isMobile,
+            ),
+          )
+          .toList(),
     );
   }
 

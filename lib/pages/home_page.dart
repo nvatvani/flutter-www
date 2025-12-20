@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../widgets/typing_text.dart';
@@ -57,42 +57,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeroSection(BuildContext context, bool isMobile) {
-    final heroContent =
-        isMobile
-            ? Column(
-              children: [
-                const PulsingPhoto(
-                  size: 160,
-                  imagePath: 'assets/content/shared/niraj.png',
-                ),
-                const SizedBox(height: 40),
-                _buildHeroText(context, isMobile),
-              ],
-            )
-            : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(child: _buildHeroText(context, isMobile)),
-                const SizedBox(width: 60),
-                const PulsingPhoto(
-                  size: 220,
-                  imagePath: 'assets/content/shared/niraj.png',
-                ),
-              ],
-            );
+    // GIF path for controlled animation
+    const gifPath = 'assets/content/shared/niraj-veo.gif';
+
+    final heroContent = isMobile
+        ? Column(
+            children: [
+              const PulsingPhoto(
+                size: 160,
+                gifPath: gifPath,
+                pauseDuration: Duration(seconds: 10),
+              ),
+              const SizedBox(height: 40),
+              _buildHeroText(context, isMobile),
+            ],
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: _buildHeroText(context, isMobile)),
+              const SizedBox(width: 60),
+              const PulsingPhoto(
+                size: 220,
+                gifPath: gifPath,
+                pauseDuration: Duration(seconds: 10),
+              ),
+            ],
+          );
 
     return heroContent;
   }
 
   Widget _buildHeroText(BuildContext context, bool isMobile) {
-    final titleStyle =
-        isMobile
-            ? Theme.of(context).textTheme.displaySmall
-            : Theme.of(context).textTheme.displayLarge;
+    final titleStyle = isMobile
+        ? Theme.of(context).textTheme.displaySmall
+        : Theme.of(context).textTheme.displayLarge;
 
     return Column(
-      crossAxisAlignment:
-          isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: isMobile
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       children: [
         Text(
           "Hi, I'm",
@@ -117,15 +121,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildIntroSection(BuildContext context) {
     return GlassContainer(
-      child:
-          _content.isEmpty
-              ? const Center(
-                child: CircularProgressIndicator(color: AppTheme.cyan),
-              )
-              : MarkdownBody(
-                data: _content,
-                styleSheet: _markdownStyle(context),
-              ),
+      child: _content.isEmpty
+          ? const Center(child: CircularProgressIndicator(color: AppTheme.cyan))
+          : MarkdownBody(data: _content, styleSheet: _markdownStyle(context)),
     );
   }
 
