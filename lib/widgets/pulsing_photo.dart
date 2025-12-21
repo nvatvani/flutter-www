@@ -15,12 +15,14 @@ enum AnimationState {
 /// Plays: first frame (10s pause) -> forward to last -> last frame (10s pause) -> reverse to first -> repeat
 class PulsingPhoto extends StatefulWidget {
   final String gifPath;
+  final String? backgroundImagePath; // Static image to show behind GIF
   final double size;
   final Duration pauseDuration;
 
   const PulsingPhoto({
     super.key,
     required this.gifPath,
+    this.backgroundImagePath,
     this.size = 200,
     this.pauseDuration = const Duration(seconds: 10),
   });
@@ -39,7 +41,6 @@ class _PulsingPhotoState extends State<PulsingPhoto>
   Timer? _cycleTimer;
   AnimationState _currentState = AnimationState.pausedAtFirst;
   bool _hasStartedCycle = false;
-  bool _ignoreNextFinish = false;
 
   @override
   void initState() {
@@ -75,7 +76,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
 
   // Step 1: Pause at first frame for 10 seconds
   void _startStep1() {
-    debugPrint('Step 1: Pausing at first frame');
+    // debugPrint('Step 1: Pausing at first frame');
     _currentState = AnimationState.pausedAtFirst;
     _gifController?.stop(); // Use stop() to reset to frame 0
 
@@ -89,7 +90,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
   // Step 2: Play forward to last frame
   void _startStep2() {
     if (!mounted || _gifController == null) return;
-    debugPrint('Step 2: Playing forward');
+    // debugPrint('Step 2: Playing forward');
     _currentState = AnimationState.playingForward;
     // Explicitly set inverted: false to ensure forward playback
     _gifController!.play(initialFrame: 0, inverted: false);
@@ -97,7 +98,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
 
   // Step 3: Pause at last frame for 10 seconds
   void _startStep3() {
-    debugPrint('Step 3: Pausing at last frame');
+    // debugPrint('Step 3: Pausing at last frame');
     _currentState = AnimationState.pausedAtLast;
     _gifController?.pause();
 
@@ -111,7 +112,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
   // Step 4: Play reverse to first frame
   void _startStep4() {
     if (!mounted || _gifController == null) return;
-    debugPrint('Step 4: Playing reverse');
+    // debugPrint('Step 4: Playing reverse');
     _currentState = AnimationState.playingReverse;
     _gifController!.play(inverted: true);
   }
@@ -122,11 +123,11 @@ class _PulsingPhotoState extends State<PulsingPhoto>
     // Ignore spurious finish events during paused states
     if (_currentState == AnimationState.pausedAtFirst ||
         _currentState == AnimationState.pausedAtLast) {
-      debugPrint('Ignoring finish during paused state: $_currentState');
+      // debugPrint('Ignoring finish during paused state: $_currentState');
       return;
     }
 
-    debugPrint('Animation finished in state: $_currentState');
+    // debugPrint('Animation finished in state: $_currentState');
 
     switch (_currentState) {
       case AnimationState.playingForward:
@@ -227,7 +228,20 @@ class _PulsingPhotoState extends State<PulsingPhoto>
             ),
           ),
 
-          // GIF with controlled animation
+          // Static background image (prevents GIF transparency issues)
+          if (widget.backgroundImagePath != null)
+            ClipOval(
+              child: SizedBox(
+                width: widget.size,
+                height: widget.size,
+                child: Image.asset(
+                  widget.backgroundImagePath!,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+          // GIF with controlled animation (layered on top)
           ClipOval(
             child: SizedBox(
               width: widget.size,
@@ -239,7 +253,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
                 loop: false,
                 onFinish: _onAnimationFinished,
                 errorBuilder: (context, error, stackTrace) {
-                  debugPrint('GIF Error: $error');
+                  // debugPrint('GIF Error: $error');
                   return Container(
                     color: AppTheme.surface,
                     child: Icon(
