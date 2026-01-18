@@ -31,7 +31,7 @@ class PulsingPhoto extends StatefulWidget {
     required this.reverseWebpPath,
     this.size = 200,
     this.displayDuration = const Duration(seconds: 10),
-    this.fadeDuration = const Duration(milliseconds: 20),
+    this.fadeDuration = const Duration(milliseconds: 2000),
   });
 
   @override
