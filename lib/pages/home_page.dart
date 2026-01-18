@@ -57,9 +57,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeroSection(BuildContext context, bool isMobile) {
-    // GIF path for controlled animation
-    const gifPath = 'assets/content/shared/niraj-veo.gif';
-    const backgroundPath = 'assets/content/shared/niraj-veo.png';
+    // Asset paths for 4-phase animation cycle
+    const startImagePath = 'assets/content/shared/niraj-veo-start.png';
+    const forwardWebpPath = 'assets/content/shared/niraj-veo.webp';
+    const endImagePath = 'assets/content/shared/niraj-veo-end.png';
+    const reverseWebpPath = 'assets/content/shared/niraj-veo-reverse.webp';
 
     final heroContent =
         isMobile
@@ -67,9 +69,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const PulsingPhoto(
                   size: 160,
-                  gifPath: gifPath,
-                  backgroundImagePath: backgroundPath,
-                  pauseDuration: Duration(seconds: 10),
+                  startImagePath: startImagePath,
+                  forwardWebpPath: forwardWebpPath,
+                  endImagePath: endImagePath,
+                  reverseWebpPath: reverseWebpPath,
+                  displayDuration: Duration(seconds: 10),
                 ),
                 const SizedBox(height: 40),
                 _buildHeroText(context, isMobile),
@@ -82,9 +86,11 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 60),
                 const PulsingPhoto(
                   size: 220,
-                  gifPath: gifPath,
-                  backgroundImagePath: backgroundPath,
-                  pauseDuration: Duration(seconds: 10),
+                  startImagePath: startImagePath,
+                  forwardWebpPath: forwardWebpPath,
+                  endImagePath: endImagePath,
+                  reverseWebpPath: reverseWebpPath,
+                  displayDuration: Duration(seconds: 10),
                 ),
               ],
             );
