@@ -32,5 +32,7 @@ flutter:
     - assets/content/about/
     - assets/content/about/about.md
     - assets/content/blog/
-    - assets/content/blog/welcome/
-    - assets/content/blog/welcome/welcome.md
+    - assets/content/blog/20251217-welcome/
+    - assets/content/blog/20251217-welcome/20251217-welcome.md
+    - assets/content/blog/20260205-imtgripe/
+    - assets/content/blog/20260205-imtgripe/20260205-imtgripe.md

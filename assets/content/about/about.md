@@ -7,14 +7,15 @@ A career spanning over two decades, from hands-on software engineering to execut
 ## Current Role
 
 ### Chief Technology Officer & Head of Product
-**Hiven Energy** | 2021 - Present
+**Hiven Energy** | 2021 - 2026
 
 Leading one of Fortum's startup ventures within Energy Demand Response and Distributed Energy Resources.
 
 **Key Achievements:**
 - EV integration for SmartCharging based on Day Ahead Spot Price, Time-of-Use, and Carbon Intensity
 - EV Charger integration via API, and OCPP protocols
-- Demand Side Flexibility participation with Swedish TSO Svenska Kraftnät (FCR-D up, mFRR) using centrally controlled logic hosted on the public cloud without any local hardware or dongle connected to the Smart Metre's HAN-port; a first in Sweden.
+- Demand Side Flexibility participation with Swedish TSO Svenska Kraftnät (FCR-D up, mFRR) using centrally controlled logic hosted on the public cloud without any local hardware or dongle connected to the Smart Meter's HAN-port; a first in Sweden.
+- Employment of AI/ML capabilities to forecast EV charging patterns and generate optimal bids for Demand Side Flexibility participation while simultaneously meeting individual SmartCharging expectations set by the EV-owner.
 
 **Responsibilities:**
 - Product Roadmap and Backlog management

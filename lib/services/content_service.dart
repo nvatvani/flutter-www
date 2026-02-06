@@ -27,11 +27,18 @@ class ContentService {
   static List<BlogPostMeta> getBlogPosts() {
     return [
       BlogPostMeta(
-        slug: 'welcome',
+        slug: '20251217-welcome',
         title: 'Welcome to My Blog',
         excerpt:
             'My first blog post where I share my journey and what to expect.',
-        date: DateTime(2024, 12, 17),
+        date: DateTime(2025, 12, 17),
+      ),
+      BlogPostMeta(
+        slug: '20260205-imtgripe',
+        title: 'The Major Gripe with International Money Transfers',
+        excerpt:
+            'Wise, Remitly, Revolut, etc. are all great, but they all have one major annoyance!',
+        date: DateTime(2026, 2, 5),
       ),
     ];
   }

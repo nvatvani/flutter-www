@@ -110,9 +110,10 @@ class _BlogPageState extends State<BlogPage> {
             onPressed: _goBack,
           ),
         ShaderMask(
-          shaderCallback: (bounds) => const LinearGradient(
-            colors: [AppTheme.cyan, AppTheme.purple],
-          ).createShader(bounds),
+          shaderCallback:
+              (bounds) => const LinearGradient(
+                colors: [AppTheme.cyan, AppTheme.purple],
+              ).createShader(bounds),
           child: Text(
             _selectedPostSlug != null ? 'Back to Blog' : 'Blog',
             style: Theme.of(
@@ -144,15 +145,16 @@ class _BlogPageState extends State<BlogPage> {
     return Wrap(
       spacing: 24,
       runSpacing: 24,
-      children: posts
-          .map(
-            (post) => _BlogPostCard(
-              post: post,
-              onTap: () => _navigateToPost(post.slug),
-              isMobile: isMobile,
-            ),
-          )
-          .toList(),
+      children:
+          posts
+              .map(
+                (post) => _BlogPostCard(
+                  post: post,
+                  onTap: () => _navigateToPost(post.slug),
+                  isMobile: isMobile,
+                ),
+              )
+              .toList(),
     );
   }
 
@@ -170,6 +172,33 @@ class _BlogPageState extends State<BlogPage> {
       child: MarkdownBody(
         data: _postContent,
         styleSheet: _markdownStyle(context),
+        imageBuilder: (uri, title, alt) {
+          // Resolve relative image paths to full asset paths
+          final imagePath = uri.toString();
+          final fullPath =
+              imagePath.startsWith('http') || imagePath.startsWith('/')
+                  ? imagePath
+                  : 'assets/content/blog/$_selectedPostSlug/$imagePath';
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                fullPath,
+                fit: BoxFit.contain,
+                errorBuilder:
+                    (context, error, stackTrace) => Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: AppTheme.surface,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text('Image not found: $imagePath'),
+                    ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
