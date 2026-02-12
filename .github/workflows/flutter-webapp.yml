@@ -22,9 +22,35 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.cicd.outputs.page-url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: g1j0shi/flutter-web-app-deployment@main
-        id: cicd
+      - uses: actions/checkout@v6
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Run Tests
+        run: flutter test
+
+      - name: Build Web App
+        run: flutter build web --wasm --base-href "${{ steps.pages.outputs.base_path }}/" --target "lib/main.dart"
+
+      # GitHub Pages serves 404.html for any unknown path.
+      # Copying index.html to 404.html makes all SPA deep-links work.
+      - name: Enable SPA deep-link routing
+        run: cp build/web/index.html build/web/404.html
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          working-directory: "./"
+          path: build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
