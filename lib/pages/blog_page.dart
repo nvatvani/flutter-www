@@ -1,6 +1,10 @@
+import 'dart:js_interop';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:web/web.dart' as web;
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
@@ -198,6 +202,35 @@ class _BlogPageState extends State<BlogPage> {
               ),
             ),
           );
+        },
+        onTapLink: (text, href, title) async {
+          if (href == null || href.isEmpty) return;
+
+          if (href.startsWith('http://') || href.startsWith('https://')) {
+            // External URL — open with url_launcher
+            final uri = Uri.parse(href);
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri, mode: LaunchMode.externalApplication);
+            }
+          } else if (href.endsWith('.html')) {
+            // Relative HTML file — load from assets and open in new tab
+            final assetPath = 'assets/content/blog/$_selectedPostSlug/$href';
+            try {
+              final htmlContent = await rootBundle.loadString(assetPath);
+              final blob = web.Blob(
+                [htmlContent.toJS].toJS,
+                web.BlobPropertyBag(type: 'text/html'),
+              );
+              final blobUrl = web.URL.createObjectURL(blob);
+              web.window.open(blobUrl, '_blank');
+            } catch (e) {
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not load: $href')),
+                );
+              }
+            }
+          }
         },
       ),
     );
