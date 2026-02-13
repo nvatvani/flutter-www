@@ -4,7 +4,7 @@ A career spanning over two decades, from hands-on software engineering to execut
 
 ---
 
-## Current Role
+## Previous Experience
 
 ### Chief Technology Officer & Head of Product
 **Hiven Energy** | 2021 - 2026
@@ -23,8 +23,6 @@ Leading one of Fortum's startup ventures within Energy Demand Response and Distr
 - Customer engagements and exhibition speaking
 
 ---
-
-## Previous Experience
 
 ### System Manager
 **Fortum** | 2018 - 2022
