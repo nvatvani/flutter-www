@@ -6,8 +6,8 @@ I'm a technology leader passionate about leveraging AI/ML, and smart energy solu
 
 ## What I Do
 
-- 🔋 **Smart Energy Solutions** — Building apps for EV SmartCharging and Demand Response
+- 🔋 **Energy Markets & DER** — Deep expertise in Ancillary Services (FCR-D, mFRR), VPPs, V2G/V2X, and Electric Vehicle SmartCharging.
 - 🚀 **Product Leadership** — From roadmap to delivery, leading cross-functional teams
 - 🌍 **Sustainability Focus** — Technology for a greener future
 
-> "Change - being the only constant in this world demands action via adaptaion. Time - moving only in one direction offers immense opportunities for innovation and progress, but never second chances. Use the past to inform the present and shape the future, as revising the past to justify the present is a futile exercise."
+> "Change - being the only constant in this world demands action via adapatation. Time - moving only in one direction offers immense opportunities for innovation and progress, but never second chances. Use the past to inform the present and shape the future, as revising the past to justify the present is a futile exercise."

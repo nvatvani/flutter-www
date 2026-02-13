@@ -89,6 +89,6 @@ Full-stack development and deployment across multiple technologies:
 ## Core Competencies
 
 - **Leadership:** Technology strategy, team building, cross-functional collaboration
-- **Technical:** Java, C/C++, System Architecture, Public Cloud (primarily AWS and Azure), leveraging AI/ML capabilities
+- **Technical:** Java, C/C++, Python, System Architecture, Public Cloud (primarily AWS and Azure), leveraging AI/ML capabilities
 - **Domain:** Energy Management, Financial Services, Embedded Systems and IoT
 - **Product:** Roadmap planning, Agile methodologies, Customer engagement
