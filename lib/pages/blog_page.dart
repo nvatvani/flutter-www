@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:go_router/go_router.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:url_launcher/url_launcher.dart';
@@ -194,16 +194,16 @@ class _BlogPageState extends State<BlogPage> {
           } else if (href.endsWith('.html')) {
             // Relative HTML file — load from assets and open in new tab
             final assetPath = 'assets/content/blog/$_selectedPostSlug/$href';
+            final messenger = ScaffoldMessenger.of(context);
             try {
               // Use ContentService to ensure bundle is used
               final htmlContent = await ContentService.loadMarkdown(assetPath);
               openHtmlContent(htmlContent);
             } catch (e) {
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Could not load: $href')),
-                );
-              }
+              if (!mounted) return;
+              messenger.showSnackBar(
+                SnackBar(content: Text('Could not load: $href')),
+              );
             }
           }
         },

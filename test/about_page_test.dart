@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:niraj_portfolio/pages/about_page.dart';
 import 'package:niraj_portfolio/services/content_service.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter/services.dart';
 
 // Mock AssetBundle to avoid actual file I/O

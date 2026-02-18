@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../widgets/typing_text.dart';
