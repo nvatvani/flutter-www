@@ -1,7 +1,7 @@
 import 'dart:js_interop';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:web/web.dart' as web;
@@ -29,7 +29,9 @@ class _BlogPageState extends State<BlogPage> {
     super.initState();
     // Load initial post if slug provided via URL
     if (widget.initialPostSlug != null && widget.initialPostSlug!.isNotEmpty) {
-      _selectPost(widget.initialPostSlug!);
+      _selectedPostSlug = widget.initialPostSlug;
+      _isLoading = true;
+      _loadPostContent(widget.initialPostSlug!);
     }
   }
 
@@ -50,12 +52,15 @@ class _BlogPageState extends State<BlogPage> {
     }
   }
 
-  void _selectPost(String slug) async {
+  void _selectPost(String slug) {
     setState(() {
       _selectedPostSlug = slug;
       _isLoading = true;
     });
+    _loadPostContent(slug);
+  }
 
+  Future<void> _loadPostContent(String slug) async {
     final content = await ContentService.loadBlogPost(slug);
     if (mounted) {
       setState(() {
@@ -216,7 +221,8 @@ class _BlogPageState extends State<BlogPage> {
             // Relative HTML file — load from assets and open in new tab
             final assetPath = 'assets/content/blog/$_selectedPostSlug/$href';
             try {
-              final htmlContent = await rootBundle.loadString(assetPath);
+              // Use ContentService to ensure bundle is used
+              final htmlContent = await ContentService.loadMarkdown(assetPath);
               final blob = web.Blob(
                 [htmlContent.toJS].toJS,
                 web.BlobPropertyBag(type: 'text/html'),

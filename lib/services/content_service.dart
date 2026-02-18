@@ -1,13 +1,21 @@
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart'; // Added for @visibleForTesting
 
 /// Service for loading and parsing Markdown content from assets
 class ContentService {
   /// Load markdown content from an asset file
-  static Future<String> loadMarkdown(String path) async {
+  static AssetBundle? _bundle;
+
+  @visibleForTesting
+  static set bundle(AssetBundle b) => _bundle = b;
+
+  static AssetBundle get _effectiveBundle => _bundle ?? rootBundle;
+
+  static Future<String> loadMarkdown(String key) async {
     try {
-      return await rootBundle.loadString(path);
+      return await _effectiveBundle.loadString(key);
     } catch (e) {
-      return '# Content not found\n\nThe requested content could not be loaded.';
+      return '# Content not found: $key\n\nError: $e';
     }
   }
 
