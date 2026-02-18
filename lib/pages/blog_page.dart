@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:go_router/go_router.dart';
+import 'package:markdown/markdown.dart' as md;
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
@@ -181,33 +181,7 @@ class _BlogPageState extends State<BlogPage> {
       child: MarkdownBody(
         data: _postContent,
         styleSheet: _markdownStyle(context),
-        imageBuilder: (uri, title, alt) {
-          // Resolve relative image paths to full asset paths
-          final imagePath = uri.toString();
-          final fullPath =
-              imagePath.startsWith('http') || imagePath.startsWith('/')
-                  ? imagePath
-                  : 'assets/content/blog/$_selectedPostSlug/$imagePath';
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                fullPath,
-                fit: BoxFit.contain,
-                errorBuilder:
-                    (context, error, stackTrace) => Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppTheme.surface,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text('Image not found: $imagePath'),
-                    ),
-              ),
-            ),
-          );
-        },
+        builders: {'img': _ImageBuilder(_selectedPostSlug)},
         onTapLink: (text, href, title) async {
           if (href == null || href.isEmpty) return;
 
@@ -349,6 +323,46 @@ class _BlogPostCardState extends State<_BlogPostCard> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ImageBuilder extends MarkdownElementBuilder {
+  final String? postSlug;
+
+  _ImageBuilder(this.postSlug);
+
+  @override
+  Widget? visitElementAfter(md.Element element, TextStyle? preferredStyle) {
+    if (element.tag != 'img') return null;
+
+    final uri = element.attributes['src'];
+    if (uri == null) return null;
+
+    final imagePath = uri.toString();
+    final fullPath =
+        imagePath.startsWith('http') || imagePath.startsWith('/')
+            ? imagePath
+            : 'assets/content/blog/$postSlug/$imagePath';
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          fullPath,
+          fit: BoxFit.contain,
+          errorBuilder:
+              (context, error, stackTrace) => Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppTheme.surface,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text('Image not found: $imagePath'),
+              ),
         ),
       ),
     );
