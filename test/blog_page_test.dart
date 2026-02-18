@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:niraj_portfolio/pages/blog_page.dart';
 import 'package:niraj_portfolio/services/content_service.dart';
-import 'package:niraj_portfolio/theme/app_theme.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:niraj_portfolio/utils/responsive.dart';
 
 class MockAssetBundle extends CachingAssetBundle {
   @override
@@ -19,57 +17,6 @@ class MockAssetBundle extends CachingAssetBundle {
   @override
   Future<ByteData> load(String key) async {
     throw FlutterError('Asset not found: $key');
-  }
-}
-
-class TestWrapper extends StatefulWidget {
-  const TestWrapper({super.key});
-
-  @override
-  State<TestWrapper> createState() => _TestWrapperState();
-}
-
-class _TestWrapperState extends State<TestWrapper> {
-  bool _isLoading = true;
-  String _content = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _loadContent();
-  }
-
-  Future<void> _loadContent() async {
-    final content = await ContentService.loadBlogPost('20260205-imtgripe');
-    if (mounted) {
-      setState(() {
-        _content = content;
-        _isLoading = false;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    }
-    final padding = Responsive.horizontalPadding(context);
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: padding),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Responsive.maxContentWidth(context),
-            ),
-            child: Column(
-              children: [GlassContainer(child: MarkdownBody(data: _content))],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
 

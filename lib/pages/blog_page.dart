@@ -1,13 +1,13 @@
-import 'dart:js_interop';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web/web.dart' as web;
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
+import '../utils/web_helper_stub.dart'
+    if (dart.library.js_interop) '../utils/web_helper.dart';
 
 /// Blog Page - List and Detail Views
 class BlogPage extends StatefulWidget {
@@ -223,12 +223,7 @@ class _BlogPageState extends State<BlogPage> {
             try {
               // Use ContentService to ensure bundle is used
               final htmlContent = await ContentService.loadMarkdown(assetPath);
-              final blob = web.Blob(
-                [htmlContent.toJS].toJS,
-                web.BlobPropertyBag(type: 'text/html'),
-              );
-              final blobUrl = web.URL.createObjectURL(blob);
-              web.window.open(blobUrl, '_blank');
+              openHtmlContent(htmlContent);
             } catch (e) {
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
