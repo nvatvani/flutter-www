@@ -20,3 +20,26 @@ ffmpeg -i niraj-veo-original.mp4 -y -vf 'fps=24,split[s0][s1];[s0]palettegen[p];
 ```
 
 But the result is a 99MB GIF which is just impractical to use in a website.
+
+## Troubleshooting Skwasm Runtime Error
+
+If you encounter `RuntimeError: function signature mismatch` with `skwasm`, try:
+
+1.  **Running Integration Tests**:
+    ```bash
+    flutter drive \
+      --driver=test_driver/integration_test.dart \
+      --target=integration_test/app_test.dart \
+      -d web-server \
+      --web-renderer skwasm
+    ```
+    (Note: May need to create `test_driver/integration_test.dart` if it doesn't exist).
+
+2.  **Fallback to CanvasKit**:
+    If Skwasm remains unstable, build with CanvasKit:
+    ```bash
+    flutter build web --web-renderer canvaskit
+    ```
+
+3.  **Recent Fix**:
+    Removed a redundant `SystemChrome.setApplicationSwitcherDescription` call in `lib/utils/page_utils.dart` which might have caused interop issues.

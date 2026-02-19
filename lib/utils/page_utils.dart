@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 /// A widget that sets the browser page title.
 ///
@@ -22,14 +21,6 @@ class PageMeta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String fullTitle = isRoot ? title : '$title | Niraj Vatvani';
-
-    // Also set the title in the engine, which updates document.title
-    SystemChrome.setApplicationSwitcherDescription(
-      ApplicationSwitcherDescription(
-        label: fullTitle,
-        primaryColor: color?.value ?? 0xFF000000,
-      ),
-    );
 
     return Title(
       title: fullTitle,
