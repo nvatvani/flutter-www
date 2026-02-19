@@ -6,6 +6,8 @@ import '../widgets/typing_text.dart';
 import '../widgets/pulsing_photo.dart';
 import '../services/content_service.dart';
 
+import '../utils/page_utils.dart'; // Add import
+
 /// Home/Landing Page
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,22 +35,26 @@ class _HomePageState extends State<HomePage> {
     final isMobile = Responsive.isMobile(context);
     final padding = Responsive.horizontalPadding(context);
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: padding),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Responsive.maxContentWidth(context),
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: isMobile ? 40 : 80),
-                _buildHeroSection(context, isMobile),
-                const SizedBox(height: 60),
-                _buildIntroSection(context),
-                const SizedBox(height: 80),
-              ],
+    return PageMeta(
+      title: 'Niraj Vatvani | CTO & Product Leader',
+      isRoot: true,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: padding),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: Responsive.maxContentWidth(context),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: isMobile ? 40 : 80),
+                  _buildHeroSection(context, isMobile),
+                  const SizedBox(height: 60),
+                  _buildIntroSection(context),
+                  const SizedBox(height: 80),
+                ],
+              ),
             ),
           ),
         ),

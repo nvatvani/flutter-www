@@ -4,6 +4,8 @@ import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
 
+import '../utils/page_utils.dart'; // Add import
+
 /// About Me Page - Professional Journey
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -31,23 +33,26 @@ class _AboutPageState extends State<AboutPage> {
     final padding = Responsive.horizontalPadding(context);
     final isMobile = Responsive.isMobile(context);
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: padding),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Responsive.maxContentWidth(context),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: isMobile ? 30 : 60),
-                _buildHeader(context),
-                const SizedBox(height: 40),
-                _buildContent(context),
-                const SizedBox(height: 80),
-              ],
+    return PageMeta(
+      title: 'About',
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: padding),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: Responsive.maxContentWidth(context),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: isMobile ? 30 : 60),
+                  _buildHeader(context),
+                  const SizedBox(height: 40),
+                  _buildContent(context),
+                  const SizedBox(height: 80),
+                ],
+              ),
             ),
           ),
         ),

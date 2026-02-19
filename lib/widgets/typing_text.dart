@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 
@@ -26,53 +27,76 @@ class _TypingTextState extends State<TypingText> {
   bool _isDeleting = false;
   String _displayText = '';
 
+  Timer? _typingTimer;
+
   @override
   void initState() {
     super.initState();
-    _startTyping();
+    _tryTypeNext();
   }
 
-  void _startTyping() async {
-    while (mounted) {
-      final currentText = widget.texts[_textIndex];
+  @override
+  void dispose() {
+    _typingTimer?.cancel();
+    super.dispose();
+  }
 
-      if (!_isDeleting) {
+  void _tryTypeNext() {
+    if (!mounted) return;
+
+    final currentText = widget.texts[_textIndex];
+    Duration nextDelay;
+
+    if (!_isDeleting) {
+      if (_charIndex < currentText.length) {
         // Typing
-        if (_charIndex < currentText.length) {
-          await Future.delayed(widget.typingSpeed);
+        nextDelay = widget.typingSpeed;
+        _typingTimer = Timer(nextDelay, () {
           if (mounted) {
             setState(() {
               _charIndex++;
               _displayText = currentText.substring(0, _charIndex);
             });
+            _tryTypeNext();
           }
-        } else {
-          // Pause before deleting
-          await Future.delayed(widget.pauseDuration);
-          if (mounted) {
-            setState(() => _isDeleting = true);
-          }
-        }
+        });
       } else {
-        // Deleting
-        if (_charIndex > 0) {
-          await Future.delayed(
-            Duration(milliseconds: widget.typingSpeed.inMilliseconds ~/ 2),
-          );
+        // Finished typing, wait before deleting
+        nextDelay = widget.pauseDuration;
+        _typingTimer = Timer(nextDelay, () {
+          if (mounted) {
+            setState(() {
+              _isDeleting = true;
+            });
+            _tryTypeNext();
+          }
+        });
+      }
+    } else {
+      // Deleting
+      if (_charIndex > 0) {
+        nextDelay = Duration(
+          milliseconds: widget.typingSpeed.inMilliseconds ~/ 2,
+        );
+        _typingTimer = Timer(nextDelay, () {
           if (mounted) {
             setState(() {
               _charIndex--;
               _displayText = currentText.substring(0, _charIndex);
             });
+            _tryTypeNext();
           }
-        } else {
-          // Move to next text
-          if (mounted) {
-            setState(() {
-              _isDeleting = false;
-              _textIndex = (_textIndex + 1) % widget.texts.length;
-            });
-          }
+        });
+      } else {
+        // Finished deleting, move to next text
+        // No delay needed to switch index, but maybe a small frame delay?
+        // Let's just switch and continue
+        if (mounted) {
+          setState(() {
+            _isDeleting = false;
+            _textIndex = (_textIndex + 1) % widget.texts.length;
+          });
+          _tryTypeNext();
         }
       }
     }

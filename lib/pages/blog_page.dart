@@ -9,6 +9,8 @@ import '../services/content_service.dart';
 import '../utils/web_helper_stub.dart'
     if (dart.library.js_interop) '../utils/web_helper.dart';
 
+import '../utils/page_utils.dart'; // Add import
+
 /// Blog Page - List and Detail Views
 class BlogPage extends StatefulWidget {
   final String? initialPostSlug;
@@ -78,31 +80,43 @@ class _BlogPageState extends State<BlogPage> {
     context.go('/blog/$slug');
   }
 
+  String _getPageTitle() {
+    if (_selectedPostSlug == null) return 'Blog';
+
+    // Find post title
+    final posts = ContentService.getBlogPosts();
+    final post = posts.where((p) => p.slug == _selectedPostSlug).firstOrNull;
+    return post?.title ?? 'Blog Post';
+  }
+
   @override
   Widget build(BuildContext context) {
     final padding = Responsive.horizontalPadding(context);
     final isMobile = Responsive.isMobile(context);
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: padding),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Responsive.maxContentWidth(context),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: isMobile ? 30 : 60),
-                _buildHeader(context),
-                const SizedBox(height: 40),
-                if (_selectedPostSlug != null)
-                  _buildPostDetail(context)
-                else
-                  _buildPostList(context, isMobile),
-                const SizedBox(height: 80),
-              ],
+    return PageMeta(
+      title: _getPageTitle(),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: padding),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: Responsive.maxContentWidth(context),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: isMobile ? 30 : 60),
+                  _buildHeader(context),
+                  const SizedBox(height: 40),
+                  if (_selectedPostSlug != null)
+                    _buildPostDetail(context)
+                  else
+                    _buildPostList(context, isMobile),
+                  const SizedBox(height: 80),
+                ],
+              ),
             ),
           ),
         ),
