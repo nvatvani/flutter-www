@@ -56,17 +56,11 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return ShaderMask(
-      shaderCallback:
-          (bounds) => const LinearGradient(
-            colors: [AppTheme.cyan, AppTheme.purple],
-          ).createShader(bounds),
-      child: Text(
-        'About Me',
-        style: Theme.of(
-          context,
-        ).textTheme.displayMedium?.copyWith(color: Colors.white),
-      ),
+    return Text(
+      'About Me',
+      style: Theme.of(
+        context,
+      ).textTheme.displayMedium?.copyWith(color: AppTheme.cyan),
     );
   }
 
@@ -110,13 +104,12 @@ class _AboutPageState extends State<AboutPage> {
         fontWeight: FontWeight.w600,
       ),
       blockquoteDecoration: BoxDecoration(
-        border: Border(left: BorderSide(color: AppTheme.purple, width: 4)),
+        color: AppTheme.purple.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(4),
       ),
-      blockquotePadding: const EdgeInsets.only(left: 16),
+      blockquotePadding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
       horizontalRuleDecoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(color: AppTheme.cyan.withOpacity(0.3), width: 1),
-        ),
+        color: AppTheme.cyan.withOpacity(0.3),
       ),
     );
   }

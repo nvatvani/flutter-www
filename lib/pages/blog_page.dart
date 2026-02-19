@@ -132,17 +132,11 @@ class _BlogPageState extends State<BlogPage> {
             icon: const Icon(Icons.arrow_back, color: AppTheme.cyan),
             onPressed: _goBack,
           ),
-        ShaderMask(
-          shaderCallback:
-              (bounds) => const LinearGradient(
-                colors: [AppTheme.cyan, AppTheme.purple],
-              ).createShader(bounds),
-          child: Text(
-            _selectedPostSlug != null ? 'Back to Blog' : 'Blog',
-            style: Theme.of(
-              context,
-            ).textTheme.displayMedium?.copyWith(color: Colors.white),
-          ),
+        Text(
+          _selectedPostSlug != null ? 'Back to Blog' : 'Blog',
+          style: Theme.of(
+            context,
+          ).textTheme.displayMedium?.copyWith(color: AppTheme.cyan),
         ),
       ],
     );
@@ -243,12 +237,9 @@ class _BlogPageState extends State<BlogPage> {
       codeblockDecoration: BoxDecoration(
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppTheme.cyan.withOpacity(0.2)),
       ),
       horizontalRuleDecoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(color: AppTheme.cyan.withOpacity(0.3), width: 1),
-        ),
+        color: AppTheme.cyan.withOpacity(0.3), // Using color instead of border
       ),
     );
   }
