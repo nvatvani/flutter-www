@@ -1,15 +1,15 @@
 # Professional Journey
 
-A career spanning over two decades, from hands-on software engineering to executive technology leadership.
+A career spanning over two decades, from hands-on software engineering to executive technology leadership across Energy, Financial Services, and Payments.
 
 ---
 
 ## Previous Experience
 
 ### Chief Technology Officer & Head of Product
-**Hiven Energy** | 2021 - 2026
+**Hiven Energy (Fortum Venture)** | 2021 - 2026
 
-Leading one of Fortum's startup ventures within Energy Demand Response and Distributed Energy Resources.
+Led product management, engineering, and delivery of a SaaS platform for Energy Demand Response and DER, acting as the primary technical interface for partners, and enterprise clients.
 
 **Key Achievements:**
 - EV integration for SmartCharging based on Day Ahead Spot Price, Time-of-Use, and Carbon Intensity
@@ -19,46 +19,50 @@ Leading one of Fortum's startup ventures within Energy Demand Response and Distr
 
 **Responsibilities:**
 - Product Roadmap and Backlog management
-- Vetting NDAs, Vendor/SupplierContracts, and Tenders for Solution Delivery, SLAs, and Data Privacy
+- Vetting NDAs, Vendor/SupplierContracts, and Tenders for Solution Delivery, SLAs, and Data Privacy / GDPR
+- Managed cross-functional team of developers, testers, data-scientists, and designers across Sweden, Finland, and Poland
 - Customer engagements and exhibition speaking
 
 ---
 
-### System Manager
+### System Manager / Business Owner (SmartPort)
 **Fortum** | 2018 - 2022
 
-Business Owner and Development Lead of the SmartPort Solution for Port Facilities.
+Led the technical turnaround and client operations for SmartPort, an access-control solution for ports.
 
 **Impact:**
-- 64% cost reduction after first 12 months
-- 41% increase in annual revenue from 2nd year
-- Transformed a loss-making business into a profitable one leading to a successful divestment by Fortum
+- 64% cost reduction in the first year and 41% revenue boost by year two
+- Transformed a loss-making portfolio into a profitable one, leading to successful divestment to Weasel Software
+- Served as Product Owner and Support Lead, managing client expectations and delivery standards
+
+**Prior Role at Fortum:** Spent 6 months with Fortum Charge&Drive as Business Analyst, enabling the Payment System of the CPO backend to be compliant with 3DSecure. Objective achieved ahead of the Dec 2020 deadline. The CPO system today is part of Plugsurfing / FleetCor / Corpay.
 
 ---
 
 ### Senior Manager
-**Macquarie Group** | 2014 - 2018
+**Macquarie Bank** | 2014 - 2018
 
-L2 Regional Shift Lead of Risk Management Group's DevOps unit.
+L2 Regional Shift Lead of Risk Management Group's DevOps unit managing engineering teams across London, India, Philippines, and Australia.
 
-- Led L1 staff based in India and Philippines
-- Supported 25+ Java-based web applications tailored for Market Risk, Credit Risk, Compliance, Operational Risk, and Internal Audit
-- Contributed to Business Continuity Planning, Disaster Recovery and Resilience
+- Led the L2 Regional Shift for DevOps, managing distributed L1/L2 teams
+- Cultivated relationships with Business Product Owners and Technical Platform Owners across Credit, Compliance, and Market Risk divisions
+- Supported 25+ Java-based web applications; managed incident response, change requests, and development roadmaps
+- Wrote and tested Application Recovery Procedures for Business Continuity Planning, Disaster Recovery and Resilience
 
 ---
 
-### Manager / Tech Lead
-**Macquarie Group** | 2010 - 2014
+### Senior Manager
+**Macquarie Bank** | May 2013 - Jul 2014
 
-Started as Java Developer, progressed to Tech Lead for Market Risk unit.
+Based in Sydney, led the Market Risk development team (8 members) using Agile methods.
 
-- Development and Support for APAC, EMEA, and Americas regions
-- Cross-divisional collaboration with Credit, Compliance, and OpRisk
+- Managed expectations of the Market Risk Business Unit within the Risk Management Group
+- Cross-divisional collaboration with Credit, Compliance, Internal Audit, and OpRisk
 
 ---
 
 ### System Engineer
-**Seamless Distribution Systems** | 2006 - 2010
+**Seamless Payments AB** | 2006 - 2010
 
 Full-stack development and deployment across multiple technologies:
 
@@ -69,7 +73,7 @@ Full-stack development and deployment across multiple technologies:
 ---
 
 ### Application Engineer
-**Seamless Distribution Systems** | 2004 - 2006
+**Seamless Payments AB** | 2004 - 2006
 
 **Highlights:**
 - POS Integration for 7-Eleven, CircleK, and others
@@ -87,6 +91,8 @@ Full-stack development and deployment across multiple technologies:
 ## Core Competencies
 
 - **Leadership:** Technology strategy, team building, cross-functional collaboration
-- **Technical:** Java, C/C++, Python, System Architecture, Public Cloud (primarily AWS and Azure), leveraging AI/ML capabilities
+- **Client Delivery & Strategy:** Technical Pre-sales, Solution Design, Integration Planning, SLA Management, Technical Vendor Management, Tender/Contract Vetting
+- **Engineering Leadership:** Agile, ITIL v3, GDPR & EU Data Act Compliance, Product Roadmap Management, Risk Management
+- **Technical:** Java, C/C++, Python, System Architecture, Verifone/Ingenico Payment Terminals, Public Cloud (primarily AWS and Azure), leveraging AI/ML capabilities
 - **Domain:** Energy Management, Financial Services, Embedded Systems and IoT
-- **Product:** Roadmap planning, Agile methodologies, Customer engagement
+- **Product:** Roadmap Planning & Backlog Management, Agile SCRUM/Kanban, Customer Engagement & Stakeholder Management, ITIL v3, GDPR & EU Data Act Compliance, Risk Management
