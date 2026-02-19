@@ -368,8 +368,9 @@ class _ImageBuilder extends MarkdownElementBuilder {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
         child: Image.asset(
           fullPath,
           fit: BoxFit.contain,
