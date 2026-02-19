@@ -1,7 +1,7 @@
 name: niraj_portfolio
 description: Personal portfolio website for Niraj Vatvani
 publish_to: 'https://github.com/nvatvani/flutter-www'
-version: 1.0.0
+version: 1.1.0
 
 environment:
   sdk: ^3.7.0-0
