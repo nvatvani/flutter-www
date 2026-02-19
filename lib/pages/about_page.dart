@@ -4,7 +4,7 @@ import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
 import '../services/content_service.dart';
 
-import '../utils/page_utils.dart'; // Add import
+import '../utils/page_utils.dart';
 
 /// About Me Page - Professional Journey
 class AboutPage extends StatefulWidget {
@@ -15,17 +15,12 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  String _content = '';
+  late final Future<String> _contentFuture;
 
   @override
   void initState() {
     super.initState();
-    _loadContent();
-  }
-
-  Future<void> _loadContent() async {
-    final content = await ContentService.loadAbout();
-    if (mounted) setState(() => _content = content);
+    _contentFuture = ContentService.loadAbout();
   }
 
   @override
@@ -76,17 +71,26 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildContent(BuildContext context) {
-    if (_content.isEmpty) {
-      return const Center(
-        child: Padding(
-          padding: EdgeInsets.all(60),
-          child: CircularProgressIndicator(color: AppTheme.cyan),
-        ),
-      );
-    }
-
-    return GlassContainer(
-      child: MarkdownBody(data: _content, styleSheet: _markdownStyle(context)),
+    return FutureBuilder<String>(
+      future: _contentFuture,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return GlassContainer(
+            child: MarkdownBody(
+              data: snapshot.data!,
+              styleSheet: _markdownStyle(context),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        }
+        return const Center(
+          child: Padding(
+            padding: EdgeInsets.all(60),
+            child: CircularProgressIndicator(color: AppTheme.cyan),
+          ),
+        );
+      },
     );
   }
 
@@ -111,10 +115,7 @@ class _AboutPageState extends State<AboutPage> {
       blockquotePadding: const EdgeInsets.only(left: 16),
       horizontalRuleDecoration: BoxDecoration(
         border: Border(
-          top: BorderSide(
-            color: AppTheme.cyan.withValues(alpha: 0.3),
-            width: 1,
-          ),
+          top: BorderSide(color: AppTheme.cyan.withOpacity(0.3), width: 1),
         ),
       ),
     );

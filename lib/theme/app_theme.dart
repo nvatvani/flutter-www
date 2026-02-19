@@ -27,20 +27,21 @@ class AppTheme {
     Color? borderColor,
   }) {
     return BoxDecoration(
-      color: Colors.white.withValues(alpha: opacity),
+      color: Colors.white.withOpacity(opacity),
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(
-        color: borderColor ?? cyan.withValues(alpha: 0.2),
-        width: 1,
-      ),
+      border: Border.all(color: borderColor ?? cyan.withOpacity(0.2), width: 1),
     );
   }
 
   // Glow box shadow
-  static List<BoxShadow> glowShadow(Color color, {double blur = 20, double spread = 0}) {
+  static List<BoxShadow> glowShadow(
+    Color color, {
+    double blur = 20,
+    double spread = 0,
+  }) {
     return [
       BoxShadow(
-        color: color.withValues(alpha: 0.4),
+        color: color.withOpacity(0.4),
         blurRadius: blur,
         spreadRadius: spread,
       ),

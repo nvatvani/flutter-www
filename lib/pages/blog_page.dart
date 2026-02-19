@@ -243,7 +243,12 @@ class _BlogPageState extends State<BlogPage> {
       codeblockDecoration: BoxDecoration(
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppTheme.cyan.withValues(alpha: 0.2)),
+        border: Border.all(color: AppTheme.cyan.withOpacity(0.2)),
+      ),
+      horizontalRuleDecoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: AppTheme.cyan.withOpacity(0.3), width: 1),
+        ),
       ),
     );
   }
@@ -290,7 +295,7 @@ class _BlogPostCardState extends State<_BlogPostCard> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: AppTheme.cyan.withValues(alpha: 0.2),
+                        color: AppTheme.cyan.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
