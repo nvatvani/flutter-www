@@ -9,17 +9,17 @@ A career spanning over two decades, from hands-on software engineering to execut
 ### Chief Technology Officer & Head of Product
 **Hiven Energy (Fortum Venture)** | 2021 - 2026
 
-Led product management, engineering, and delivery of a SaaS platform for Energy Demand Response and DER, acting as the primary technical interface for partners, and enterprise clients.
+Led product management, engineering, and delivery of a SaaS platform for Energy Demand Response and DER, acting as the primary technical interface for partners and enterprise clients.
 
 **Key Achievements:**
 - EV integration for SmartCharging based on Day Ahead Spot Price, Time-of-Use, and Carbon Intensity
-- EV Charger integration via API, and OCPP protocols
+- EV Charger integration via API and OCPP protocols
 - Demand Side Flexibility participation with Swedish TSO Svenska Kraftnät (FCR-D up, mFRR) using centrally controlled logic hosted on the public cloud without any local hardware or dongle connected to the Smart Meter's HAN-port; a first in Sweden.
 - Employment of AI/ML capabilities to forecast EV charging patterns and generate optimal bids for Demand Side Flexibility participation while simultaneously meeting individual SmartCharging expectations set by the EV-owner.
 
 **Responsibilities:**
 - Product Roadmap and Backlog management
-- Vetting NDAs, Vendor/SupplierContracts, and Tenders for Solution Delivery, SLAs, and Data Privacy / GDPR
+- Vetting NDAs, Vendor/Supplier Contracts, and Tenders for Solution Delivery, SLAs, and Data Privacy / GDPR
 - Managed cross-functional team of developers, testers, data-scientists, and designers across Sweden, Finland, and Poland
 - Customer engagements and exhibition speaking
 
@@ -52,7 +52,7 @@ L2 Regional Shift Lead of Risk Management Group's DevOps unit managing engineeri
 ---
 
 ### Senior Manager
-**Macquarie Bank** | May 2013 - Jul 2014
+**Macquarie Bank** | 2013 - 2014
 
 Based in Sydney, led the Market Risk development team (8 members) using Agile methods.
 
@@ -92,7 +92,7 @@ Full-stack development and deployment across multiple technologies:
 
 - **Leadership:** Technology strategy, team building, cross-functional collaboration
 - **Client Delivery & Strategy:** Technical Pre-sales, Solution Design, Integration Planning, SLA Management, Technical Vendor Management, Tender/Contract Vetting
-- **Engineering Leadership:** Agile, ITIL v3, GDPR & EU Data Act Compliance, Product Roadmap Management, Risk Management
-- **Technical:** Java, C/C++, Python, System Architecture, Verifone/Ingenico Payment Terminals, Public Cloud (primarily AWS and Azure), leveraging AI/ML capabilities
+- **Engineering Leadership:** Agile SCRUM/Kanban, ITIL v3, GDPR & EU Data Act Compliance, Product Roadmap Management, Risk Management
+- **Technical:** Java, C/C++, Python, System Architecture, Verifone/Ingenico Payment Terminals, Public Cloud (AWS/Azure), applied AI/ML
 - **Domain:** Energy Management, Financial Services, Embedded Systems and IoT
-- **Product:** Roadmap Planning & Backlog Management, Agile SCRUM/Kanban, Customer Engagement & Stakeholder Management, ITIL v3, GDPR & EU Data Act Compliance, Risk Management
+- **Product:** Roadmap Planning & Backlog Management, Customer Engagement & Stakeholder Management
