@@ -133,17 +133,14 @@ class GlassContainer extends StatelessWidget {
       margin: margin,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: Container(
-            padding: padding ?? const EdgeInsets.all(24),
-            decoration: AppTheme.glassDecoration(
-              blur: blur,
-              opacity: opacity,
-              borderColor: borderColor,
-            ),
-            child: child,
+        child: Container(
+          padding: padding ?? const EdgeInsets.all(24),
+          decoration: AppTheme.glassDecoration(
+            blur: blur,
+            opacity: opacity,
+            borderColor: borderColor,
           ),
+          child: child,
         ),
       ),
     );
