@@ -27,7 +27,7 @@ class PageMeta extends StatelessWidget {
     SystemChrome.setApplicationSwitcherDescription(
       ApplicationSwitcherDescription(
         label: fullTitle,
-        primaryColor: color?.value ?? 0xFF000000,
+        primaryColor: color?.toARGB32() ?? 0xFF000000,
       ),
     );
 

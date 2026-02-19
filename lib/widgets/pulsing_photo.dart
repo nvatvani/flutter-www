@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' show pi;
 import 'package:flutter/material.dart';
 import 'package:gif_view/gif_view.dart';
 import '../theme/app_theme.dart';
@@ -198,7 +199,7 @@ class _PulsingPhotoState extends State<PulsingPhoto>
             animation: _rotationController,
             builder: (context, child) {
               return Transform.rotate(
-                angle: _rotationController.value * 2 * 3.14159,
+                angle: _rotationController.value * 2 * pi,
                 child: Container(
                   width: widget.size + 16,
                   height: widget.size + 16,

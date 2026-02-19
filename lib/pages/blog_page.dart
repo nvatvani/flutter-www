@@ -9,7 +9,7 @@ import '../services/content_service.dart';
 import '../utils/web_helper_stub.dart'
     if (dart.library.js_interop) '../utils/web_helper.dart';
 
-import '../utils/page_utils.dart'; // Add import
+import '../utils/page_utils.dart';
 
 /// Blog Page - List and Detail Views
 class BlogPage extends StatefulWidget {
@@ -239,7 +239,7 @@ class _BlogPageState extends State<BlogPage> {
         borderRadius: BorderRadius.circular(8),
       ),
       horizontalRuleDecoration: BoxDecoration(
-        color: AppTheme.cyan.withOpacity(0.3), // Using color instead of border
+        color: AppTheme.cyan.withValues(alpha: 0.3),
       ),
     );
   }
@@ -278,26 +278,22 @@ class _BlogPostCardState extends State<_BlogPostCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.cyan.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        widget.post.formattedDate,
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          color: AppTheme.cyan,
-                          fontSize: 12,
-                        ),
-                      ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppTheme.cyan.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    widget.post.formattedDate,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: AppTheme.cyan,
+                      fontSize: 12,
                     ),
-                  ],
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -359,22 +355,18 @@ class _ImageBuilder extends MarkdownElementBuilder {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Container(
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-        child: Image.asset(
-          fullPath,
-          fit: BoxFit.contain,
-          errorBuilder:
-              (context, error, stackTrace) => Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppTheme.surface,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text('Image not found: $imagePath'),
+      child: Image.asset(
+        fullPath,
+        fit: BoxFit.contain,
+        errorBuilder:
+            (context, error, stackTrace) => Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppTheme.surface,
+                borderRadius: BorderRadius.circular(8),
               ),
-        ),
+              child: Text('Image not found: $imagePath'),
+            ),
       ),
     );
   }

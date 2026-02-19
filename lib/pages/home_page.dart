@@ -6,7 +6,7 @@ import '../widgets/typing_text.dart';
 import '../widgets/pulsing_photo.dart';
 import '../services/content_service.dart';
 
-import '../utils/page_utils.dart'; // Add import
+import '../utils/page_utils.dart';
 
 /// Home/Landing Page
 class HomePage extends StatefulWidget {

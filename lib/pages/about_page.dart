@@ -104,12 +104,12 @@ class _AboutPageState extends State<AboutPage> {
         fontWeight: FontWeight.w600,
       ),
       blockquoteDecoration: BoxDecoration(
-        color: AppTheme.purple.withOpacity(0.1),
+        color: AppTheme.purple.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(4),
       ),
       blockquotePadding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
       horizontalRuleDecoration: BoxDecoration(
-        color: AppTheme.cyan.withOpacity(0.3),
+        color: AppTheme.cyan.withValues(alpha: 0.3),
       ),
     );
   }

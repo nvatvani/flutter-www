@@ -39,7 +39,7 @@ jobs:
         run: flutter test
 
       - name: Build Web App
-        run: flutter build web --wasm --no-source-maps --base-href "${{ steps.pages.outputs.base_path }}/" --target "lib/main.dart"
+        run: flutter build web --no-source-maps --base-href "${{ steps.pages.outputs.base_path }}/" --target "lib/main.dart"
 
       # GitHub Pages serves 404.html for any unknown path.
       # Copying index.html to 404.html makes all SPA deep-links work.

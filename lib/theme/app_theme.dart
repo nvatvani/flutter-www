@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:ui';
 
 /// Theme 17: Plasma Stream - Design System
 class AppTheme {
@@ -22,14 +21,16 @@ class AppTheme {
 
   // Glass effect decoration
   static BoxDecoration glassDecoration({
-    double blur = 20,
     double opacity = 0.1,
     Color? borderColor,
   }) {
     return BoxDecoration(
-      color: Colors.white.withOpacity(opacity),
+      color: Colors.white.withValues(alpha: opacity),
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: borderColor ?? cyan.withOpacity(0.2), width: 1),
+      border: Border.all(
+        color: borderColor ?? cyan.withValues(alpha: 0.2),
+        width: 1,
+      ),
     );
   }
 
@@ -41,7 +42,7 @@ class AppTheme {
   }) {
     return [
       BoxShadow(
-        color: color.withOpacity(0.4),
+        color: color.withValues(alpha: 0.4),
         blurRadius: blur,
         spreadRadius: spread,
       ),
@@ -108,10 +109,9 @@ class AppTheme {
   }
 }
 
-/// Widget for applying glass blur effect
+/// Widget for applying glass effect
 class GlassContainer extends StatelessWidget {
   final Widget child;
-  final double blur;
   final double opacity;
   final Color? borderColor;
   final EdgeInsetsGeometry? padding;
@@ -120,7 +120,6 @@ class GlassContainer extends StatelessWidget {
   const GlassContainer({
     super.key,
     required this.child,
-    this.blur = 20,
     this.opacity = 0.08,
     this.borderColor,
     this.padding,
@@ -131,17 +130,14 @@ class GlassContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: padding ?? const EdgeInsets.all(24),
-          decoration: AppTheme.glassDecoration(
-            blur: blur,
-            opacity: opacity,
-            borderColor: borderColor,
-          ),
-          child: child,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+      child: Container(
+        padding: padding ?? const EdgeInsets.all(24),
+        decoration: AppTheme.glassDecoration(
+          opacity: opacity,
+          borderColor: borderColor,
         ),
+        child: child,
       ),
     );
   }

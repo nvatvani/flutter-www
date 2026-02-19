@@ -4,6 +4,7 @@ import '../pages/home_page.dart';
 import '../pages/about_page.dart';
 import '../pages/blog_page.dart';
 import '../widgets/app_shell.dart';
+import '../theme/app_theme.dart';
 
 /// App router configuration with permalink support
 final GoRouter appRouter = GoRouter(
@@ -51,7 +52,7 @@ final GoRouter appRouter = GoRouter(
   // Error page for unknown routes
   errorBuilder:
       (context, state) => Scaffold(
-        backgroundColor: const Color(0xFF030308),
+        backgroundColor: AppTheme.background,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -64,21 +65,21 @@ final GoRouter appRouter = GoRouter(
                   foreground:
                       Paint()
                         ..shader = const LinearGradient(
-                          colors: [Color(0xFF00e5ff), Color(0xFFa855f7)],
+                          colors: [AppTheme.cyan, AppTheme.purple],
                         ).createShader(const Rect.fromLTWH(0, 0, 100, 70)),
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 'Page not found',
-                style: TextStyle(color: Color(0xFFa0a0b0), fontSize: 18),
+                style: TextStyle(color: AppTheme.textSecondary, fontSize: 18),
               ),
               const SizedBox(height: 32),
               TextButton(
                 onPressed: () => context.go('/'),
                 child: const Text(
                   '← Back to Home',
-                  style: TextStyle(color: Color(0xFF00e5ff)),
+                  style: TextStyle(color: AppTheme.cyan),
                 ),
               ),
             ],
